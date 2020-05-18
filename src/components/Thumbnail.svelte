@@ -1,18 +1,16 @@
 <script>
-    export let path, fileName, extension, height, width;
-
-    let image;
-
+    export let fileName, extension, height, width, clickHandler;
+    let isPortrait = height > width;
 </script>
 
-<div class="thumbnail">
-    <a href={`gallery/${fileName}${extension}`}>
+<div 
+    class="thumbnail" 
+    on:click={() => clickHandler({ fileName, extension, isPortrait })}
+>
     <img 
-       src={`${path}/thumbnails/${fileName}${extension}`} 
-       class:active={height > width} 
-        bind:this={image} 
+       src={`images/thumbnails/${fileName}${extension}`} 
+       class:isPortrait 
      /> 
-</a>
 </div>
 
 <style>
@@ -31,7 +29,7 @@
       width: auto;
       transform: translate(-50%,-50%);
     }
-    div img.active {
+    div img.isPortrait {
       width: 100%;
       height: auto;
     }

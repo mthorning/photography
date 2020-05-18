@@ -10,11 +10,15 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
-    "thumbnails": "ibr static/gallery -m 512 -o thumbnails"
+    "images:thumbnails": "ibr src-images -m 256 -o ../static/images/thumbnails",
+    "images:fullsize": "ibr src-images -m 2048 -o ../static/images/fullsize",
+    "images": "yarn run images:thumbnails && yarn run images:fullsize"
   },
   "dependencies": {
     "compression": "^1.7.1",
     "image-size": "^0.8.3",
+    "jpeg-exif": "^1.1.4",
+    "node-image-resizer": "^1.0.0",
     "polka": "next",
     "sirv": "^0.4.0"
   },

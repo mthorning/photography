@@ -8,7 +8,9 @@
 
 <script>
     import Thumbnail from '../../components/Thumbnail.svelte';
+    import Lightbox from '../../components/Lightbox.svelte';
     export let images;
+    let selected;
 </script>
 
 <svelte:head>
@@ -16,13 +18,17 @@
 </svelte:head>
 
 <div>
-{#each images as image}
-    <Thumbnail {...image} />
-{/each}
+    {#if selected}
+        <Lightbox {...selected} on:closeLightbox={() => selected = undefined} />
+    {/if}
+    {#each images as image}
+        <Thumbnail {...image} clickHandler={img => selected = img}/>
+    {/each}
 </div>
 
 <style>
     div {
+        cursor: pointer;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
