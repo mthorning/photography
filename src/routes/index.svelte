@@ -36,11 +36,8 @@
 	<title>Sapper project template</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<h1>My Photos</h1>
 
-<figure>
-	<img alt='Success Kid' src='successkid.jpg'>
-	<figcaption>Have fun with Sapper!</figcaption>
-</figure>
+<p>This site will showcase some of the photos I have taken. If it doesn't look like much right now then that is because it is a work in progress, come back later to see if I have done any more work!</p>
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<p>You're probably here for the photos so take a look at the <a rel="prefetch" href="/gallery">gallery.</a></p>

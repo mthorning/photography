@@ -1,3 +1,16 @@
+<svelte:head>
+	<title>Gallery</title>
+</svelte:head>
+
+<div>
+    {#if selectedIdx !== undefined}
+        <Lightbox {...selectedImage} on:click={close} on:keydown={onKeydown} />
+    {/if}
+    {#each images as image, index}
+        <Thumbnail {...image} on:click={img => selectedIdx = index}/>
+    {/each}
+</div>
+
 <script context="module">
     export async function preload(page, session) {
         const res = await this.fetch('gallery.json');
@@ -10,21 +23,34 @@
     import Thumbnail from '../../components/Thumbnail.svelte';
     import Lightbox from '../../components/Lightbox.svelte';
     export let images;
-    let selected;
+    
+    let selectedIdx;
+    $: selectedImage = images[selectedIdx]
+
+    function close() {
+        selectedIdx = undefined;
+    }
+
+    function onKeydown(e) {
+        const last = images.length - 1 
+
+        switch(e.which) {
+            case 27: 
+                close();
+                break;
+            case 37:
+                selectedIdx = selectedIdx === 0 
+                    ? last
+                    : selectedIdx - 1;
+                break;
+            case 39:
+                selectedIdx = selectedIdx === last
+                    ? 0
+                    : selectedIdx + 1;
+        }
+    }
+
 </script>
-
-<svelte:head>
-	<title>Gallery</title>
-</svelte:head>
-
-<div>
-    {#if selected}
-        <Lightbox {...selected} on:closeLightbox={() => selected = undefined} />
-    {/if}
-    {#each images as image}
-        <Thumbnail {...image} clickHandler={img => selected = img}/>
-    {/each}
-</div>
 
 <style>
     div {

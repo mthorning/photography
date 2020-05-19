@@ -1,17 +1,18 @@
-<script>
-    export let fileName, extension, height, width, clickHandler;
-    let isPortrait = height > width;
-</script>
-
 <div 
     class="thumbnail" 
-    on:click={() => clickHandler({ fileName, extension, isPortrait })}
+    on:click
 >
     <img 
-       src={`images/thumbnails/${fileName}${extension}`} 
-       class:isPortrait 
+        alt={fileName}
+        src={`images/thumbnails/${fileName}.${type}`} 
+        class:isPortrait 
      /> 
 </div>
+
+<script>
+    export let isPortrait, fileName, type, clickHandler;
+</script>
+
 
 <style>
     div {

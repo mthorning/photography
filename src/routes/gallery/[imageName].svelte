@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>{image.name}</title>
+</svelte:head>
+
 <script context="module">
     export async function preload(page, session) {
         const { imageName } = page.params;
@@ -11,14 +15,5 @@
     export let image;
 </script>
 
-<svelte:head>
-    <title>{image.name}</title>
-</svelte:head>
+<img alt={image.name} src={image.path} />
 
-<img src={image.path} />
-
-<style>
-    img {
-
-    }
-</style>

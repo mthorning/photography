@@ -15,7 +15,7 @@ export async function get(req, res, next) {
           const size = sizeOf(path.resolve("static", thumbsLocation, file));
           return {
             fileName: file.replace(path.extname(file), ""),
-            extension: path.extname(file),
+            isPortrait: size.height > size.width,
             ...size,
           };
         })

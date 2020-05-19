@@ -1,17 +1,11 @@
-<script>
-    import { createEventDispatcher } from 'svelte';
-    export let fileName, extension, isPortrait;
-
-    const dispatch = createEventDispatcher();
-    function close() {
-        dispatch('closeLightbox')
-    }
-
-</script>
-
-<div on:click={close}>
-    <img class:isPortrait src={`images/fullsize/${fileName}${extension}`} />
+<!-- svelte-ignore a11y-autofocus -->
+<div autofocus tabindex="-1" on:click on:keydown>
+    <img alt={fileName} class:isPortrait src={`images/fullsize/${fileName}.${type}`} />
 </div>
+
+<script>
+    export let isPortrait, fileName, type;
+</script>
 
 <style>
     div {
