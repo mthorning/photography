@@ -10,7 +10,7 @@
 </div>
 
 <script>
-    export let isPortrait, fileName, type, clickHandler;
+    export let isPortrait, fileName, type;
 </script>
 
 
