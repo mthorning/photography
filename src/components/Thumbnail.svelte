@@ -5,6 +5,8 @@
     <img 
         alt={fileName}
         src={`images/thumbnails/${fileName}.${type}`} 
+        loading="lazy"
+        decoding="async"
         class:isPortrait 
      /> 
 </div>

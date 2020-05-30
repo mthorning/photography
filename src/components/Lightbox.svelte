@@ -15,7 +15,7 @@
         bottom: 0;
         left: 0;
         z-index: 100;
-        background: rgba(0, 0, 0, 0.95);
+        background: #fff;
         padding: 16px;
         display: flex;
         align-items: center;
