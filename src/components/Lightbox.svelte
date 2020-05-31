@@ -1,6 +1,10 @@
 <!-- svelte-ignore a11y-autofocus -->
 <div autofocus tabindex="-1" on:click on:keydown>
-    <img alt={fileName} class:isPortrait src={`images/fullsize/${fileName}.${type}`} />
+    <img 
+       alt={fileName} 
+       class:isPortrait 
+       src={`images/fullsize/${fileName}.${type}`} 
+    />
 </div>
 
 <script>
@@ -26,6 +30,7 @@
         width: 100%;
         height: 100%;
         max-width: 1920px;
+        background: transparent url('https://lunawood.com/wp-content/uploads/2018/02/placeholder-image.png') center no-repeat;
     }
 
 </style>

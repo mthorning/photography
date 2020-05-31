@@ -3,12 +3,13 @@
 </svelte:head>
 
 <div>
-    {#if selectedIdx !== undefined}
-        <Lightbox {...selectedImage} on:click={close} on:keydown={onKeydown} />
+    {#if !images || !images.length}
+        <h5>I thought I had more images than this...</h5>
+    {:else}
+        {#each images as image, index}
+            <Thumbnail {...image} on:click={img => selectedIdx = index}/>
+        {/each}
     {/if}
-    {#each images as image, index}
-        <Thumbnail {...image} on:click={img => selectedIdx = index}/>
-    {/each}
 </div>
 
 <script context="module">
@@ -21,8 +22,7 @@
 
 <script>
     import Thumbnail from '../../components/Thumbnail.svelte';
-    import Lightbox from '../../components/Lightbox.svelte';
-    export let images;
+    export let images = [];
     
     let selectedIdx;
     $: selectedImage = images[selectedIdx]
