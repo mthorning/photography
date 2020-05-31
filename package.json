@@ -11,7 +11,8 @@
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
     "release": "./release-code.sh vps",
-    "resize-images": "node image-resize.js"
+    "resize-images": "node image-resize.js",
+    "postversion": "git push && git push --tags && yarn run release"
   },
   "dependencies": {
     "compression": "^1.7.1",
