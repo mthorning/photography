@@ -6,8 +6,12 @@
     export async function preload(page, session) {
         const { fileName } = page.params;
         const res = await this.fetch(`gallery/${fileName}.json`);
-        const image = await res.json();
-        return { image }
+        if(res.status === 200) {
+            const image = await res.json();
+            return { image }
+        }
+
+        this.error(404, "Not Found");
     }
 </script>
 

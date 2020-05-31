@@ -19,7 +19,6 @@
         bottom: 0;
         left: 0;
         z-index: 100;
-        background: rgba(0, 0, 0, 0.9);
         padding: 16px;
         display: flex;
         align-items: center;

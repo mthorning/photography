@@ -15,8 +15,11 @@
 <script context="module">
     export async function preload(page, session) {
         const res = await this.fetch('gallery.json');
-        const images = await res.json();
-        return { images }
+        if(res.status === 200) {
+            const images = await res.json();
+            return { images }
+        }
+        this.error(404, "Not Found");
     }
 </script>
 

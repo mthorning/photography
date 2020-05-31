@@ -22,14 +22,15 @@
       position: relative;
       width: 200px;
       height: 200px;
-      margin: 4px;
+      margin: 2px;
       overflow: hidden;
+      border: 1px solid #f0f0f0;
     }
     a img {
       position: absolute;
       left: 50%;
       top: 50%;
-      height: 100%;
+      height: 105%;
       width: auto;
       transform: translate(-50%,-50%);
     }
