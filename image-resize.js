@@ -3,7 +3,7 @@ const path = require("path");
 const resizer = require("node-image-resizer");
 
 const imageSrc = "/home/mthorning/Pictures/website";
-const localDest = "./photos/";
+const localDest = "./photo-gallery/";
 
 const thumbConfig = {
   path: `${localDest}/thumbnails/`,
