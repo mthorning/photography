@@ -35,10 +35,15 @@
 
 <style>
     div {
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(140px, max-content));
+       grid-gap: 16px;
+       justify-content: center;
+       padding: initial;
+    }
+    @media (min-width: 580px) {
+        div {
+            grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
+        }
     }
 </style>

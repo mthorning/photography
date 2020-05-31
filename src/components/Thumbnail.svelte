@@ -22,9 +22,9 @@
       position: relative;
       width: 140px;
       height: 140px;
-      margin: 2px;
       overflow: hidden;
       border: 1px solid #f0f0f0;
+      float: left;
     }
     a img {
       position: absolute;
@@ -37,5 +37,11 @@
     a img.isPortrait {
       width: 100%;
       height: auto;
+    }
+    @media (min-width: 580px) {
+      a {
+          width: 250px;
+          height: 250px;
+      }
     }
 </style>
