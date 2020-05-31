@@ -30,28 +30,6 @@
     let selectedIdx;
     $: selectedImage = images[selectedIdx]
 
-    function close() {
-        selectedIdx = undefined;
-    }
-
-    function onKeydown(e) {
-        const last = images.length - 1 
-
-        switch(e.which) {
-            case 27: 
-                close();
-                break;
-            case 37:
-                selectedIdx = selectedIdx === 0 
-                    ? last
-                    : selectedIdx - 1;
-                break;
-            case 39:
-                selectedIdx = selectedIdx === last
-                    ? 0
-                    : selectedIdx + 1;
-        }
-    }
 
 </script>
 

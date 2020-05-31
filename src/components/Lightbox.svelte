@@ -1,5 +1,5 @@
 <!-- svelte-ignore a11y-autofocus -->
-<div autofocus tabindex="-1" on:click on:keydown>
+<div on:click on:touchstart={onTouchstart} on:touchend={onTouchend}>
     <img 
        alt={fileName} 
        class:isPortrait 
@@ -8,12 +8,31 @@
 </div>
 
 <script>
+    import { createEventDispatcher } from 'svelte';
     export let isPortrait, fileName, type;
+    const dispatch = createEventDispatcher();
+    let touchstart = 0;
+    
+
+    function onTouchstart({ changedTouches }) {
+        touchstart = changedTouches[0].screenX;
+    };
+
+    function onTouchend({ changedTouches }) {
+        const touchend = changedTouches[0].screenX;
+        if (touchend < touchstart) {
+            dispatch('swipeleft');
+        }
+        if (touchend > touchstart) {
+            dispatch('swiperight');
+        }
+    }
+
 </script>
 
 <style>
     div {
-        position: fixed;
+        position: absolute;
         top: 0;
         right: 0;
         bottom: 0;

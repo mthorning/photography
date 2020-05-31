@@ -16,7 +16,6 @@
   "dependencies": {
     "compression": "^1.7.1",
     "image-size": "^0.8.3",
-    "jpeg-exif": "^1.1.4",
     "node-image-resizer": "^1.0.0",
     "polka": "next",
     "sirv": "^0.4.0"
