@@ -35,7 +35,7 @@
       transform: translate(-50%,-50%);
     }
     a img.isPortrait {
-      width: 100%;
+      width: 105%;
       height: auto;
     }
     @media (min-width: 580px) {

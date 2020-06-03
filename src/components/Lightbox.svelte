@@ -32,7 +32,11 @@
 
 <style>
     div {
-        height: calc(100vh - 150px);
+        position: absolute;
+        top: 66px;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -43,6 +47,7 @@
         height: 100%;
         max-width: 1920px;
         background: transparent url('https://lunawood.com/wp-content/uploads/2018/02/placeholder-image.png') center no-repeat;
+        background-size: 30%;
     }
 
 </style>
