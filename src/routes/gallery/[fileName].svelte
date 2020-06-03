@@ -1,3 +1,11 @@
+<Lightbox 
+    {...image} 
+    on:keydown={onKeydown} 
+    on:click={() => go()} 
+    on:swipeleft={() => go(image.previous)}
+    on:swiperight={() => go(image.next)}
+/>
+
 <svelte:head>
     <title>{image.fileName}</title>
 </svelte:head>
@@ -46,12 +54,3 @@
         }
     }
 </script>
-
-<Lightbox 
-    {...image} 
-    on:keydown={onKeydown} 
-    on:click={() => go()} 
-    on:swipeleft={() => go(image.previous)}
-    on:swiperight={() => go(image.next)}
-/>
-

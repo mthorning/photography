@@ -23,7 +23,7 @@
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>Matt Thorning Photography</title>
 </svelte:head>
 
 <h1>My Photos</h1>

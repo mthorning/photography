@@ -32,13 +32,7 @@
 
 <style>
     div {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 100;
-        padding: 16px;
+        height: calc(100vh - 150px);
         display: flex;
         align-items: center;
         justify-content: center;
