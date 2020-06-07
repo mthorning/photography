@@ -1,14 +1,14 @@
-<Lightbox 
+<svelte:head>
+    <title>{image.fileName}</title>
+</svelte:head>
+
+<Image 
     {...image} 
     on:keydown={onKeydown} 
     on:click={() => go()} 
     on:swipeleft={() => go(image.previous)}
     on:swiperight={() => go(image.next)}
 />
-
-<svelte:head>
-    <title>{image.fileName}</title>
-</svelte:head>
 
 <script context="module">
     export async function preload(page, session) {
@@ -26,7 +26,7 @@
 <script>
     import { onMount } from 'svelte';
     import  { goto } from '@sapper/app';
-    import Lightbox from '../../components/Lightbox.svelte';
+    import Image from '../../components/Image.svelte';
     export let image;
 
     onMount(() => {
@@ -36,7 +36,6 @@
     });
 
     function go(page = '') {
-        console.log(page);
         goto(`/gallery/${page}`);
     }
 

@@ -5,4 +5,5 @@ yarn-error.log
 /cypress/screenshots/
 /__sapper__/
 /photo-gallery/
+/photo-src/
 photo-site.tar.gz

@@ -11,11 +11,11 @@
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
     "release": "./release-code.sh vps",
-    "resize-images": "node image-resize.js",
     "postversion": "git push && git push --tags && yarn run release"
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "exif": "^0.6.0",
     "image-size": "^0.8.3",
     "node-image-resizer": "^1.0.0",
     "polka": "next",
