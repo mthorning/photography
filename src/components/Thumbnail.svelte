@@ -1,7 +1,6 @@
-<a 
+<div 
+    on:click
     class="thumbnail" 
-    href={`/gallery/${fileName}`}
-    rel=prefetch
 >
     <img 
         alt={fileName}
@@ -10,7 +9,7 @@
         decoding="async"
         class:isPortrait 
      /> 
-</a>
+</div>
 
 <script>
     export let isPortrait, fileName, type;
@@ -18,7 +17,8 @@
 
 
 <style>
-    a {
+    div {
+      cursor: pointer;
       position: relative;
       width: 140px;
       height: 140px;
@@ -26,7 +26,7 @@
       border: 1px solid #f0f0f0;
       float: left;
     }
-    a img {
+    div img {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -34,12 +34,12 @@
       width: auto;
       transform: translate(-50%,-50%);
     }
-    a img.isPortrait {
+    div img.isPortrait {
       width: 105%;
       height: auto;
     }
     @media (min-width: 580px) {
-      a {
+      div {
           width: 250px;
           height: 250px;
       }

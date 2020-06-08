@@ -6,9 +6,18 @@ import { ExifImage } from "exif";
 function getExif(image) {
   return new Promise((resolve, reject) => {
     try {
-      new ExifImage({ image }, function (error, exifData) {
-        if (error) reject(error);
-        resolve(exifData.exif);
+      new ExifImage({ image }, function (error, { exif, image }) {
+        if (error || !exif) {
+          reject(error);
+        } else {
+          resolve({
+            shutter: exif.ExposureTime,
+            apperture: exif.FNumber,
+            iso: exif.ISO,
+            focalLength: exif.FocalLength,
+            description: image.ImageDescription,
+          });
+        }
       });
     } catch (error) {
       reject(error);
@@ -54,16 +63,10 @@ export function get(req, res) {
     };
 
     Promise.all([metaPromise])
-      .then(([exif]) => {
-        console.log("exif shit", exif);
+      .then(([meta]) => {
         sendResponse(res, {
           ...response,
-          meta: {
-            shutter: exif.ExposureTime,
-            apperture: exif.FNumber,
-            iso: exif.ISO,
-            focalLength: exif.FocalLengthIn35mmFormat,
-          },
+          meta,
         });
       })
       .catch((error) => {
