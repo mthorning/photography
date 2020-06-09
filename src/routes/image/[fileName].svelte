@@ -37,7 +37,7 @@
 <style>
     div {
         background: #19191c;
-        margin: 0 -32px -32px -32px;
+        margin: 0 -32px;
         padding: 32px;
     }
     h1 {
