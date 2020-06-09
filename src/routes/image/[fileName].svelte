@@ -10,7 +10,7 @@
     {/if}
     <footer>
         <a href={`/image/${image.previous}`}>previous</a>
-        <a href={`/image/${image.next}`}>Next</a>
+        <a href={`/image/${image.next}`}>next</a>
     </footer>
 </div>
 
@@ -37,7 +37,7 @@
 <style>
     div {
         background: #19191c;
-        margin: -32px;
+        margin: 0 -32px -32px -32px;
         padding: 32px;
     }
     h1 {

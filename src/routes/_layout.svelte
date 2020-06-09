@@ -6,6 +6,7 @@
 
 <style>
 	main {
+                min-height: calc(100vh - 57px);
 		max-width: 56em;
 		padding: 2em;
 		margin: 0 auto;
