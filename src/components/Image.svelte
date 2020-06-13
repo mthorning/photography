@@ -7,7 +7,9 @@
            class:isPortrait 
            src={`images/fullsize/${fileName}.${type}`} 
          />
-         <p>f{apperture} | {shutter}sec | ISO {iso} | {focalLength}mm </p>
+         {#if apperture && shutter && iso && focalLength}
+            <p>f{apperture} | {shutter}sec | ISO {iso} | {focalLength}mm </p>
+         {/if}
     </span>
 </div>
 {#if showLightbox}
