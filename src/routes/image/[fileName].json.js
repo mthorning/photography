@@ -48,10 +48,10 @@ export function get(req, res) {
 
     const currentIdx = files.findIndex((file) => strip(file) === fileName);
     const last = files.length - 1;
+    const next = strip(currentIdx === last ? files[0] : files[currentIdx + 1]);
     const previous = strip(
-      currentIdx === last ? files[0] : files[currentIdx + 1]
+      currentIdx === 0 ? files[last] : files[currentIdx - 1]
     );
-    const next = strip(currentIdx === 0 ? files[last] : files[currentIdx - 1]);
 
     const response = {
       fileName,
