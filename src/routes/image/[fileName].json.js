@@ -6,10 +6,11 @@ import { ExifImage } from "exif";
 function getExif(image) {
   return new Promise((resolve, reject) => {
     try {
-      new ExifImage({ image }, function (error, { exif, image }) {
-        if (error || !exif) {
+      new ExifImage({ image }, function (error, data) {
+        if (error) {
           reject(error);
         } else {
+          const { exif, image } = data;
           resolve({
             shutter: exif.ExposureTime,
             apperture: exif.FNumber,
