@@ -1,24 +1,27 @@
 <!-- svelte-ignore a11y-autofocus -->
 <div on:click={() => close()} on:touchstart={onTouchstart} on:touchend={onTouchend}>
-    <img 
-        on:click={onImageClick}
+    <Img 
+        on:click
+        class={`fullsize-img ${extraClasses}`}
         alt={fileName} 
-        class:isPortrait 
+        isPortrait={isPortrait}
         src={`images/fullsize/${fileName}.${type}`} 
-        transition:fade|local={{ duration: 300, easing: quadIn, start: 0.7 }}
     />
 </div>
 
 <script>
     import { createEventDispatcher } from 'svelte';
     import { onMount } from 'svelte';
-    import { goto } from '@sapper/app';
     import { fade } from 'svelte/transition';
     import { quadIn, quadOut } from 'svelte/easing';
+    import Img from '../components/Img.svelte';
 
     export let fileName, type, isPortrait, close;
     export let previous = () => {};
     export let next = () => {};
+    let extraClasses;
+    export { extraClasses as class }
+
     let touchstart = 0;
     
     onMount(() => {
@@ -27,9 +30,6 @@
             document.removeEventListener('keydown', onKeydown);
     });
 
-    function onImageClick(e) {
-        goto(`/image/${fileName}`);
-    }
     function onTouchstart({ changedTouches }) {
         touchstart = changedTouches[0].screenX;
     };
@@ -59,7 +59,8 @@
 
 <style>
     div {
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.9) url("/spinner.gif") no-repeat center;
+        background-size: 150px;
         position: fixed;
         top: 0;
         right: 0;
@@ -71,11 +72,10 @@
         align-items: center;
         justify-content: center;
     }
-    img {
-        cursor: pointer;
+    :global(.fullsize-img) {
         max-width: 100%;
         max-height: 100%;
-        background: transparent url('https://lunawood.com/wp-content/uploads/2018/02/placeholder-image.png') center no-repeat;
-        background-size: 30%;
+        width: auto;
+        height: auto;
     }
 </style>

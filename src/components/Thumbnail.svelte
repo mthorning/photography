@@ -1,17 +1,16 @@
 <div 
-    on:click
     class="thumbnail" 
 >
-    <img 
+    <Img 
+        on:click
+        class={`img ${isPortrait ? 'isPortrait' : ''}`}
         alt={fileName}
         src={`images/thumbnails/${fileName}.${type}`} 
-        loading="lazy"
-        decoding="async"
-        class:isPortrait 
      /> 
 </div>
 
 <script>
+    import Img from '../components/Img.svelte';
     export let isPortrait, fileName, type;
 </script>
 
@@ -26,7 +25,13 @@
       border: 1px solid #f0f0f0;
       float: left;
     }
-    div img {
+    @media (min-width: 580px) {
+      div {
+          width: 250px;
+          height: 250px;
+      }
+    }
+    :global(.img) {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -34,14 +39,8 @@
       width: auto;
       transform: translate(-50%,-50%);
     }
-    div img.isPortrait {
+    :global(.isPortrait) {
       width: 105%;
       height: auto;
-    }
-    @media (min-width: 580px) {
-      div {
-          width: 250px;
-          height: 250px;
-      }
     }
 </style>

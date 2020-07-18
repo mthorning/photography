@@ -12,6 +12,8 @@
     {/if}
     {#if selectedImage}
         <Lightbox 
+            on:click={onImageClick}
+            class="pointer"
             {...selectedImage}
             close={() => selectedIdx = -1}
             next={() => 
@@ -37,6 +39,7 @@
 </script>
 
 <script>
+    import { goto } from '@sapper/app';
     import Thumbnail from '../../components/Thumbnail.svelte';
     import Lightbox from '../../components/Lightbox.svelte';
     export let images = [];
@@ -44,6 +47,10 @@
     let selectedIdx;
     $: selectedImage = images[selectedIdx]
 
+    function onImageClick(e) {
+        e.stopPropagation();
+        goto(`/image/${selectedImage.fileName}`);
+    }
 
 </script>
 
@@ -54,6 +61,9 @@
        grid-gap: 16px;
        justify-content: center;
        padding: initial;
+    }
+    :global(.pointer) {
+        cursor: pointer;
     }
     @media (min-width: 580px) {
         div {
