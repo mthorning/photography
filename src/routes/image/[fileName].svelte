@@ -4,7 +4,9 @@
 
 <div>
     <h1>{image.fileName.split('-')[1].replace(/_/g, ' ')}</h1>
-    <ImageWithMeta {...image} />
+    {#each [image] as image (image.fileName)}
+        <ImageWithMeta {...image} />
+    {/each}
     {#if image.meta && image.meta.description}
         <p>{image.meta.description}<p>
     {/if}
@@ -20,7 +22,6 @@
         const res = await this.fetch(`image/${fileName}.json`);
         if(res.status === 200) {
             const image = await res.json();
-            console.log(image);
             return { image }
         }
 
