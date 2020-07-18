@@ -7,7 +7,6 @@ const thumbsLocation = "images/thumbnails";
 export async function get(req, res, next) {
   fs.readdir(path.resolve("./static", thumbsLocation), (error, files) => {
     res.setHeader("Content-Type", "application/json");
-    console.log(error);
     if (error) res.end([]);
 
     res.end(

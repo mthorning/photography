@@ -17,6 +17,7 @@ function getExif(image) {
             iso: exif.ISO,
             focalLength: exif.FocalLength,
             description: image.ImageDescription,
+            exif,
           });
         }
       });
