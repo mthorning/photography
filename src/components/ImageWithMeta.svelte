@@ -9,11 +9,12 @@
            height={height}
            width={width}
            afterLoaded={image => {
+               imageLoaded = true
                image.style.width = 'auto'
                image.style.height = 'auto'
            }}
          />
-         {#if apperture && shutter && iso && focalLength}
+         {#if imageLoaded && apperture && shutter && iso && focalLength}
             <p>f{apperture} | {shutter}sec | ISO {iso} | {focalLength}mm </p>
          {/if}
     </div>
@@ -43,6 +44,7 @@
     const dispatch = createEventDispatcher();
     let touchstart = 0;
     let showLightbox = false;
+    let imageLoaded = false;
     
     function closeLightbox() {
         showLightbox = false 

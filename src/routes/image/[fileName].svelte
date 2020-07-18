@@ -4,7 +4,7 @@
 
 <div>
     <h1>{image.fileName.split('-')[1].replace(/_/g, ' ')}</h1>
-    <Image {...image} />
+    <ImageWithMeta {...image} />
     {#if image.meta && image.meta.description}
         <p>{image.meta.description}<p>
     {/if}
@@ -30,7 +30,7 @@
 
 <script>
     import  { goto } from '@sapper/app';
-    import Image from '../../components/Image.svelte';
+    import ImageWithMeta from '../../components/ImageWithMeta.svelte';
     export let image;
 
 </script>
