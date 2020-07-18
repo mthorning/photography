@@ -1,6 +1,5 @@
 {#each [src] as src (src)}
 <img
-         height={height}
   key={src}
   use:setOnLoad
   on:click
@@ -10,13 +9,14 @@
   decoding="async"
   alt={alt || ''}
   src={src}
+  height={height}
+  width={width}
 />
 {/each}
 
 <script>
-  export let src;
-  export let alt;
-  export let height;
+  export let src, alt, height, width;
+  export let afterLoaded = () => {};
 
   let extraClasses
   export { extraClasses as class }
@@ -27,12 +27,16 @@
   function setOnLoad(image) {
       if(image.complete) {
           loaded = true
+          afterLoaded(image)
       } else {
         image.onload = () => {
-          loaded = true;
+          loaded = true
+          afterLoaded(image);
         };
       }
   }
+
+
 </script>
 
 

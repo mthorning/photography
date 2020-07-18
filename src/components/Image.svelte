@@ -1,17 +1,22 @@
 <!-- svelte-ignore a11y-autofocus -->
-<div on:click on:touchstart={onTouchstart} on:touchend={onTouchend}>
-    <span>
+<div class="container" on:click on:touchstart={onTouchstart} on:touchend={onTouchend}>
+    <div class="image-wrapper">
         <Img 
-           height={height}
            on:click={() => showLightbox = true}
            alt={fileName} 
            class="image"
            src={`images/fullsize/${fileName}.${type}`} 
+           height={height}
+           width={width}
+           afterLoaded={image => {
+               image.style.width = 'auto'
+               image.style.height = 'auto'
+           }}
          />
          {#if apperture && shutter && iso && focalLength}
             <p>f{apperture} | {shutter}sec | ISO {iso} | {focalLength}mm </p>
          {/if}
-    </span>
+    </div>
 </div>
 {#if showLightbox}
     <Lightbox 
@@ -26,9 +31,8 @@
     import Lightbox from './Lightbox.svelte';
     import Img from './Img.svelte';
 
-    export let meta, isPortrait, fileName, type;
-    export let height = '500'
-    $: console.log(height);
+    export let meta, isPortrait, fileName, type, height, width;
+    
     $: apperture = meta.apperture;
     $: focalLength = meta.focalLength;
     $: iso = meta.iso;
@@ -61,7 +65,7 @@
 </script>
 
 <style>
-    div {
+    .container {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -71,7 +75,7 @@
         margin: 0;
         text-align: right;
     }
-    span {
+    .image-wrapper {
         background: url("/spinner.gif") no-repeat center;
         background-size: 150px;
     }
