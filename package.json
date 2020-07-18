@@ -1,7 +1,7 @@
 {
   "name": "TODO",
   "description": "TODO",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
