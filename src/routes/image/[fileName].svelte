@@ -3,7 +3,7 @@
 </svelte:head>
 
 <div>
-    <h1>{image.fileName.split('-')[2].replace(/_/g, ' ')}</h1>
+    <h1>{image.fileName.split('-')[1].replace(/_/g, ' ')}</h1>
     <Image {...image} />
     {#if image.meta && image.meta.description}
         <p>{image.meta.description}<p>
