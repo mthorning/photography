@@ -54,7 +54,6 @@
     background-size: 150px;
   }
   :global(.image) {
-    min-height: 400px;
     cursor: pointer;
     max-width: 100%;
     max-height: 50vh;

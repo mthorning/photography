@@ -1,5 +1,5 @@
 <script>
-  export let src, alt, height, width
+  export let src, alt
   export let afterLoaded = () => {}
 
   let extraClasses
