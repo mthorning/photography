@@ -1,21 +1,21 @@
 <script>
-	import Nav from '../components/Nav.svelte';
+  import Nav from '../components/Nav.svelte'
 
-	export let segment;
+  export let segment
 </script>
 
 <style>
-	main {
-                min-height: calc(100vh - 57px);
-		max-width: 56em;
-		padding: 2em;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
+  main {
+    min-height: calc(100vh - 57px);
+    max-width: 56em;
+    padding: 2em;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
 </style>
 
-<Nav {segment}/>
+<Nav {segment} />
 
 <main>
-	<slot></slot>
+  <slot />
 </main>
