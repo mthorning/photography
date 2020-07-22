@@ -1,4 +1,3 @@
-// import sirv from 'sirv';
 import serve from 'serve-static';
 import polka from 'polka';
 import compression from 'compression';
