@@ -3,7 +3,7 @@
   import Lightbox from './Lightbox.svelte'
   import Img from './Img.svelte'
 
-  export let meta, isPortrait, fileName, type, height, width
+  export let meta, isPortrait, fileName, type
 
   $: apperture = meta.apperture
   $: focalLength = meta.focalLength
