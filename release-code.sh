@@ -3,7 +3,7 @@ set -e
 
 SITE="photo-site"
 
-yarn run build
+npm run build
 tar -czvf $SITE.tar.gz \
     ./package.json \
     ./package-lock.json \
