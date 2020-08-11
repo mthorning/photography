@@ -21,6 +21,7 @@ ssh $1 << EOF
     docker stop photo && docker container rm photo
     docker run \
         --detach \
+        --restart=always \
         -p 3000:3000 \
         --name photo \
         -v ~/websites/photo-gallery/:/usr/app/static/images/ \
