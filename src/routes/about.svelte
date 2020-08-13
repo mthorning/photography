@@ -33,5 +33,5 @@
 <p>
   If you want to get in touch for any reason then please contact me on
   <a href="mailto:photos@matt-thorning.dev">photos@matt-thorning.dev</a>
-  or through the social media links above.k:)
+  or through the social media links above. :)
 </p>
