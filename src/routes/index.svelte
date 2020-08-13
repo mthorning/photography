@@ -1,41 +1,66 @@
+<script context="module">
+  export async function preload(page, session) {
+    const res = await this.fetch('index.json')
+    if (res.status === 200) {
+      const images = await res.json()
+      return { images }
+    }
+    this.error(404, 'Not Found')
+  }
+</script>
+
+<script>
+  import { goto } from '@sapper/app'
+  import Thumbnail from '../components/Thumbnail.svelte'
+  import Lightbox from '../components/Lightbox.svelte'
+  export let images = []
+
+  let selectedIdx
+  $: selectedImage = images[selectedIdx]
+
+  function onImageClick(e) {
+    e.stopPropagation()
+    goto(`/image/${selectedImage.fileName}`)
+  }
+</script>
+
 <style>
-  h1,
-  p {
-    text-align: center;
-    margin: 0 auto;
+  div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, max-content));
+    grid-gap: 16px;
+    justify-content: center;
+    padding: initial;
   }
-
-  h1 {
-    font-size: 2.8em;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin: 0 0 0.5em 0;
+  :global(.pointer) {
+    cursor: pointer;
   }
-
-  p {
-    margin: 1em auto;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      font-size: 4em;
+  @media (min-width: 580px) {
+    div {
+      grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
     }
   }
 </style>
 
 <svelte:head>
-  <title>Matt Thorning Photography</title>
+  <title>Gallery</title>
 </svelte:head>
 
-<h1>My Photos</h1>
-
-<p>
-  This site will showcase some of the photos I have taken. If it doesn't look
-  like much right now then that is because it is a work in progress, come back
-  later to see if I have done any more work!
-</p>
-
-<p>
-  You're probably here for the photos so take a look at the
-  <a rel="prefetch" href="/gallery">gallery.</a>
-</p>
+<div>
+  {#if !images || !images.length}
+    <h5>I thought I had more images than this...</h5>
+  {:else}
+    {#each images as image, index}
+      <Thumbnail {...image} on:click={() => (selectedIdx = index)} />
+    {/each}
+  {/if}
+  {#if selectedImage}
+    <Lightbox
+      on:click={onImageClick}
+      class="pointer"
+      {...selectedImage}
+      close={() => (selectedIdx = -1)}
+      next={() => (selectedIdx = selectedIdx === images.length - 1 ? 0 : selectedIdx + 1)}
+      previous={() => (selectedIdx = selectedIdx === 0 ? images.length - 1 : selectedIdx - 1)} />
+  {/if}
+</div>

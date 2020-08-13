@@ -1,4 +1,6 @@
 <script>
+  import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
+  import FaTwitterSquare from 'svelte-icons/fa/FaTwitterSquare.svelte'
   export let segment
 </script>
 
@@ -7,6 +9,10 @@
     border-bottom: 1px solid #444;
     font-weight: 300;
     padding: 0 1em;
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    justify-content: space-between;
   }
 
   ul {
@@ -45,27 +51,40 @@
     text-decoration: none;
     padding: 1em 0.5em;
     display: block;
+    display: inline-block;
+  }
+  .icon {
+    width: 1em;
+    padding-top: 18px;
+    padding-bottom: 10px;
   }
 </style>
 
 <nav>
   <ul>
     <li>
-      <a aria-current={segment === undefined ? 'page' : undefined} href=".">
-        home
-      </a>
-    </li>
-    <li>
       <a
         rel="prefetch"
-        aria-current={segment === 'gallery' ? 'page' : undefined}
-        href="gallery">
+        aria-current={segment === undefined ? 'page' : undefined}
+        href="/">
         gallery
       </a>
     </li>
     <li>
       <a aria-current={segment === 'about' ? 'page' : undefined} href="about">
         about
+      </a>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a class="icon" href="https://www.instagram.com/matt.thorning/">
+        <FaInstagram />
+      </a>
+    </li>
+    <li>
+      <a class="icon" href="https://twitter.com/MattThorning">
+        <FaTwitterSquare />
       </a>
     </li>
   </ul>
