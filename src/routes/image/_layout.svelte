@@ -1,7 +1,3 @@
-<script>
-  export let segment
-</script>
-
 <style>
   main {
     max-width: 56em;
