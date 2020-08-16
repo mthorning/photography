@@ -6,7 +6,7 @@ import calcPrintSize from "../../utils/calcPrintSize"
 
 function splitSize({ImageDescription}) {
     const cropSizeMatch = ImageDescription.match(/\[\d+,\ ?\d+\]/);
-    const cropSize = cropSizeMatch ? cropSizeMatch[0] : ''
+    const cropSize = cropSizeMatch ? cropSizeMatch[0] : []
     const printSizes = calcPrintSize(...JSON.parse(cropSize));
     const description = ImageDescription.replace(cropSize, '');
     return {printSizes, description};
