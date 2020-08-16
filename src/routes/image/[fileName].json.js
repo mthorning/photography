@@ -2,6 +2,15 @@ import fs from "fs";
 import path from "path";
 import sizeOf from "image-size";
 import {ExifImage} from "exif";
+import calcPrintSize from "../../utils/calcPrintSize"
+
+function splitSize({ImageDescription}) {
+    const cropSizeMatch = ImageDescription.match(/\[\d+,\ ?\d+\]/);
+    const cropSize = cropSizeMatch ? cropSizeMatch[0] : ''
+    const printSizes = calcPrintSize(...JSON.parse(cropSize));
+    const description = ImageDescription.replace(cropSize, '');
+    return {printSizes, description};
+}
 
 function getExif(image) {
     return new Promise((resolve, reject) => {
@@ -11,12 +20,14 @@ function getExif(image) {
                     reject(error);
                 } else {
                     const {exif, image} = data;
+                    const {printSizes, description} = splitSize(image);
                     resolve({
                         shutter: exif.ExposureTime,
                         apperture: exif.FNumber,
                         iso: exif.ISO,
                         focalLength: exif.FocalLength,
-                        description: image.ImageDescription,
+                        description,
+                        printSizes,
                         exif,
                     });
                 }

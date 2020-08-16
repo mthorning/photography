@@ -15,7 +15,6 @@
 
   onMount(() => {
     window.addEventListener('onpopstate', (e) => {
-      console.log('hi')
       e.preventDefault()
       e.stopPropagation()
     })

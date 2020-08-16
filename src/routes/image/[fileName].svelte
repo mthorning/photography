@@ -15,6 +15,8 @@
   import { goto } from '@sapper/app'
   import ImageWithMeta from '../../components/ImageWithMeta.svelte'
   export let image
+
+  $: printSizes = false && image.meta.printSizes
 </script>
 
 <style>
@@ -23,11 +25,17 @@
     margin: 0 -32px;
     padding: 32px;
   }
+  h2 {
+    border-top: 1px solid #777;
+    padding-top: 20px;
+  }
   h1 {
-    margin-bottom: 20px;
     border-bottom: 1px solid #777;
-    padding: 0 20px 20px 20px;
+    padding-bottom: 20px;
     margin-bottom: 60px;
+  }
+  .description {
+    padding: 50px 0;
   }
   footer {
     display: flex;
@@ -37,11 +45,19 @@
     padding: 20px 20px 0 20px;
     border-top: 1px solid #777;
   }
-  p {
-    margin-top: 50px;
-  }
   a {
     text-decoration: none;
+  }
+  table {
+    margin: 50px auto;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+  }
+  td {
+    padding: 8px;
+    border-top: 1px solid #777;
   }
 </style>
 
@@ -55,8 +71,48 @@
     <ImageWithMeta {...image} />
   {/each}
   {#if image.meta && image.meta.description}
-    <p>{image.meta.description}</p>
-    <p />
+    <p class="description">{image.meta.description}</p>
+  {/if}
+  {#if printSizes && printSizes.length}
+    <h2>Prints</h2>
+    <p>
+      I want to make my images available to purchase as prints though I'm still
+      looking in to the best options to offer so if you don't see what you would
+      like then please contact me. The sizes available to purchase are likely to
+      vary from image to image due to the resolution of my camera and how
+      heavily I have cropped each image.
+    </p>
+    <p>
+      For this image I would be able to provide the following sizes (in inches):
+    </p>
+    <table>
+      <thead>
+        <th>Size (in)</th>
+        <th>Size (approx. cm)</th>
+        <th>Price</th>
+      </thead>
+      <tbody>
+        {#each printSizes as print}
+          <tr>
+            <td>{print.x} x {print.y}</td>
+            <td>{Math.round(print.x * 2.54)} x {Math.round(print.y * 2.54)}</td>
+            <td>£{print.price}</td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+    <p>
+      Images will be printed on matte paper. The lead time for printing is
+      approximately 5 days but I want to check the prints personally before
+      sending them so please allow 7 - 10 days for delivery (UK only, please
+      contact me if you require international delivery).
+    </p>
+    <p>
+      I haven't gotten around to sorting out purchases throught this site yet,
+      but if you would like a print then please contact me at
+      <a href="mailto:prints@matt-thorning.dev">prints@matt-thorning.dev</a>
+      and I will invoice you through PayPal.
+    </p>
   {/if}
   <footer>
     <a href={`/image/${image.previous}`}>previous</a>
