@@ -17,7 +17,7 @@
   export let image
 
   $: printSizes =
-    true && image.meta.printSizes
+    false && image.meta.printSizes
       ? image.meta.printSizes.sort((a, b) => a.price - b.price)
       : []
 </script>
