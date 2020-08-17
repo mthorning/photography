@@ -16,7 +16,10 @@
   import ImageWithMeta from '../../components/ImageWithMeta.svelte'
   export let image
 
-  $: printSizes = false && image.meta.printSizes
+  $: printSizes =
+    true && image.meta.printSizes
+      ? image.meta.printSizes.sort((a, b) => a.price - b.price)
+      : []
 </script>
 
 <style>
@@ -89,6 +92,7 @@
       <thead>
         <th>Size (in)</th>
         <th>Size (approx. cm)</th>
+        <th>Paper</th>
         <th>Price</th>
       </thead>
       <tbody>
@@ -96,16 +100,17 @@
           <tr>
             <td>{print.x} x {print.y}</td>
             <td>{Math.round(print.x * 2.54)} x {Math.round(print.y * 2.54)}</td>
+            <td>{print.paper}</td>
             <td>£{print.price}</td>
           </tr>
         {/each}
       </tbody>
     </table>
     <p>
-      Images will be printed on matte paper. The lead time for printing is
-      approximately 5 days but I want to check the prints personally before
-      sending them so please allow 7 - 10 days for delivery (UK only, please
-      contact me if you require international delivery).
+      The lead time for printing is approximately 5 days but I want to check the
+      prints personally before sending them so please allow 7 - 10 days for
+      delivery (UK only, please contact me if you require international
+      delivery).
     </p>
     <p>
       I haven't gotten around to sorting out purchases throught this site yet,
