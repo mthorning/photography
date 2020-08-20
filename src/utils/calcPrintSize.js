@@ -39,7 +39,6 @@ export default function calcPrintSize(...args) {
 
         let matchScore = ((longestEdge / shortestEdge) - (available.x / available.y));
         matchScore < 0 ? matchScore = matchScore * -1 : matchScore;
-        console.log(available.x, 'x', available.y, matchScore);
         return matchScore < 0.05 && longestEdge > available.x && shortestEdge > available.y
 
     }).map(print => ({...print, price: calcPrice(print.price)}));

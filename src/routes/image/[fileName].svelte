@@ -14,10 +14,11 @@
 <script>
   import { goto } from '@sapper/app'
   import ImageWithMeta from '../../components/ImageWithMeta.svelte'
+  import Checkout from '../../components/Checkout.svelte'
   export let image
 
   $: printSizes =
-    false && image.meta.printSizes
+    true && image.meta.printSizes
       ? image.meta.printSizes.sort((a, b) => a.price - b.price)
       : []
 </script>
@@ -119,6 +120,7 @@
       and I will invoice you through PayPal.
     </p>
   {/if}
+  <Checkout />
   <footer>
     <a href={`/image/${image.previous}`}>previous</a>
     <a href={`/image/${image.next}`}>next</a>
