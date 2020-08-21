@@ -5,10 +5,10 @@ import {ExifImage} from "exif";
 import calcPrintSize from "../../utils/calcPrintSize"
 
 function splitSize({ImageDescription}) {
-    const cropSizeMatch = ImageDescription.match(/\[\d+,\ ?\d+\]/);
+    const cropSizeMatch = ImageDescription && ImageDescription.match(/\[\d+,\ ?\d+\]/);
     const cropSize = cropSizeMatch ? cropSizeMatch[0] : null;
     const printSizes = cropSize ? calcPrintSize(...JSON.parse(cropSize)) : []
-    const description = ImageDescription.replace(cropSize, '');
+    const description = ImageDescription && ImageDescription.replace(cropSize, '');
     return {printSizes, description};
 }
 

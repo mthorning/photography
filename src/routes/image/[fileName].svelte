@@ -14,7 +14,7 @@
 <script>
   import { goto } from '@sapper/app'
   import ImageWithMeta from '../../components/ImageWithMeta.svelte'
-  import Checkout from '../../components/Checkout.svelte'
+  import PurchasePanel from '../../components/PurchasePanel.svelte'
   export let image
 
   $: printSizes =
@@ -52,17 +52,6 @@
   a {
     text-decoration: none;
   }
-  table {
-    margin: 50px auto;
-    max-width: 450px;
-    width: 100%;
-    text-align: center;
-    border-collapse: collapse;
-  }
-  td {
-    padding: 8px;
-    border-top: 1px solid #777;
-  }
 </style>
 
 <svelte:head>
@@ -89,24 +78,7 @@
     <p>
       For this image I would be able to provide the following sizes (in inches):
     </p>
-    <table>
-      <thead>
-        <th>Size (in)</th>
-        <th>Size (approx. cm)</th>
-        <th>Paper</th>
-        <th>Price</th>
-      </thead>
-      <tbody>
-        {#each printSizes as print}
-          <tr>
-            <td>{print.x} x {print.y}</td>
-            <td>{Math.round(print.x * 2.54)} x {Math.round(print.y * 2.54)}</td>
-            <td>{print.paper}</td>
-            <td>£{print.price}</td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
+    <PurchasePanel {printSizes} />
     <p>
       The lead time for printing is approximately 5 days but I want to check the
       prints personally before sending them so please allow 7 - 10 days for
@@ -120,7 +92,6 @@
       and I will invoice you through PayPal.
     </p>
   {/if}
-  <Checkout />
   <footer>
     <a href={`/image/${image.previous}`}>previous</a>
     <a href={`/image/${image.next}`}>next</a>
