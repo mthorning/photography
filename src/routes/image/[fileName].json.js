@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
+import calcPrintSize from "tariff/src/index"
 import sizeOf from "image-size";
 import {ExifImage} from "exif";
-import calcPrintSize from "../../utils/calcPrintSize"
 
 function splitSize({ImageDescription}) {
     const cropSizeMatch = ImageDescription && ImageDescription.match(/\[\d+,\ ?\d+\]/);

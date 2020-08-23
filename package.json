@@ -14,6 +14,7 @@
     "postversion": "git push && git push --tags && npm run release"
   },
   "dependencies": {
+    "tariff": "git+ssh://git@github.com/mthorning/tariff.git#master",
     "compression": "^1.7.1",
     "exif": "^0.6.0",
     "image-size": "^0.8.3",
