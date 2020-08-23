@@ -7,7 +7,6 @@
   function select(print) {
     selected = print
   }
-  $: console.log(selected)
 </script>
 
 <style>

@@ -52,6 +52,7 @@
   .image-wrapper {
     background: url('/spinner.gif') no-repeat center;
     background-size: 150px;
+    text-align: center;
   }
   :global(.image) {
     cursor: pointer;

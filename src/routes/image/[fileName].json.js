@@ -20,13 +20,14 @@ function getExif(image) {
                     reject(error);
                 } else {
                     const {exif, image} = data;
-                    const {description} = splitSize(image);
+                    const {description, printSizes} = splitSize(image);
                     resolve({
                         shutter: exif.ExposureTime,
                         apperture: exif.FNumber,
                         iso: exif.ISO,
                         focalLength: exif.FocalLength,
                         description,
+                        printSizes,
                         exif,
                     });
                 }

@@ -17,10 +17,10 @@
   import PurchasePanel from '../../components/PurchasePanel.svelte'
   export let image
 
-  $: printSizes =
-    true && image.meta.printSizes
-      ? image.meta.printSizes.sort((a, b) => a.price - b.price)
-      : []
+  $: console.log(image.meta)
+  $: printSizes = image.meta.printSizes
+    ? image.meta.printSizes.sort((a, b) => a.price - b.price)
+    : []
 </script>
 
 <style>
