@@ -1,11 +1,10 @@
 <script>
   import Checkout from './Checkout.svelte'
-  export let printSizes
+  export let printSizes, title
 
-  let selected
-
+  $: selectedPrint = printSizes[0]
   function select(print) {
-    selected = print
+    selectedPrint = print
   }
 </script>
 
@@ -25,6 +24,9 @@
     padding: 8px;
     border-top: 1px solid #777;
   }
+  input[type='radio'] {
+    cursor: pointer;
+  }
 </style>
 
 <div>
@@ -32,14 +34,16 @@
     <thead>
       <th />
       <th>Size (in)</th>
-      <th>Pixels</th>
       <!--
-          <th>Size (approx. cm)</th>
+      <th>Pixels</th>
       -->
+      <th>Size (mm)</th>
       <th>Price</th>
+      <!--
       <th>Img Ratio</th>
       <th>Print Ratio</th>
       <th>DPI</th>
+      -->
     </thead>
     <tbody>
       {#each printSizes as print}
@@ -47,21 +51,23 @@
           <td>
             <input
               type="radio"
-              checked={print === selected}
+              checked={print === selectedPrint}
               on:change={() => select(print)} />
           </td>
           <td>{print.x} x {print.y}</td>
-          <td>{print.cropSize}</td>
           <!--
+          <td>{print.cropSize}</td>
+           -->
           <td>{Math.round(print.x * 25.4)} x {Math.round(print.y * 25.4)}</td>
-      -->
           <td>£{print.price}</td>
+          <!--
           <td>{print.imgRatio}</td>
           <td>{print.paperRatio}</td>
           <td>{print.dpi}</td>
+            -->
         </tr>
       {/each}
     </tbody>
   </table>
-  <Checkout />
+  <Checkout selectedPrint={{ ...selectedPrint, title }} />
 </div>

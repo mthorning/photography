@@ -17,18 +17,14 @@
   import PurchasePanel from '../../components/PurchasePanel.svelte'
   export let image
 
-  $: console.log(image.meta)
   $: printSizes = image.meta.printSizes
     ? image.meta.printSizes.sort((a, b) => a.price - b.price)
     : []
+
+  $: title = image && image.fileName.split('-')[1].replace(/_/g, ' ')
 </script>
 
 <style>
-  div {
-    background: #19191c;
-    margin: 0 -32px;
-    padding: 32px;
-  }
   h2 {
     border-top: 1px solid #777;
     padding-top: 20px;
@@ -49,51 +45,41 @@
     padding: 20px 20px 0 20px;
     border-top: 1px solid #777;
   }
-  a {
-    text-decoration: none;
-  }
 </style>
 
 <svelte:head>
-  <title>{image.fileName}</title>
+  <title>{title}</title>
 </svelte:head>
 
-<div>
-  <h1>{image.fileName.split('-')[1].replace(/_/g, ' ')}</h1>
-  {#each [image] as image (image.fileName)}
-    <ImageWithMeta {...image} />
-  {/each}
-  {#if image.meta && image.meta.description}
-    <p class="description">{image.meta.description}</p>
-  {/if}
-  {#if printSizes && printSizes.length}
-    <h2>Prints</h2>
-    <p>
-      I want to make my images available to purchase as prints though I'm still
-      looking in to the best options to offer so if you don't see what you would
-      like then please contact me. The sizes available to purchase are likely to
-      vary from image to image due to the resolution of my camera and how
-      heavily I have cropped each image.
-    </p>
-    <p>
-      For this image I would be able to provide the following sizes (in inches):
-    </p>
-    <PurchasePanel {printSizes} />
-    <p>
-      The lead time for printing is approximately 5 days but I want to check the
-      prints personally before sending them so please allow 7 - 10 days for
-      delivery (UK only, please contact me if you require international
-      delivery).
-    </p>
-    <p>
-      I haven't gotten around to sorting out purchases throught this site yet,
-      but if you would like a print then please contact me at
-      <a href="mailto:prints@matt-thorning.dev">prints@matt-thorning.dev</a>
-      and I will invoice you through PayPal.
-    </p>
-  {/if}
-  <footer>
-    <a href={`/image/${image.previous}`}>previous</a>
-    <a href={`/image/${image.next}`}>next</a>
-  </footer>
-</div>
+<h1>{title}</h1>
+{#each [image] as image (image.fileName)}
+  <ImageWithMeta {...image} />
+{/each}
+{#if image.meta && image.meta.description}
+  <p class="description">{image.meta.description}</p>
+{/if}
+{#if printSizes && printSizes.length}
+  <h2>Prints</h2>
+  <p>This image is available for purchase as a print in the following sizes:</p>
+  <PurchasePanel {title} {printSizes} />
+  <p>
+    Images are printed to order on Hahnemühle Fine Art Baryta paper using high
+    quality inks. It is expected that they will arrive from the printing lab
+    within three days but I want to check the quality personally before sending
+    them so please allow extra time for this.
+  </p>
+  <p>
+    The prices listed are for UK delivery only, please contact me if you require
+    international delivery.
+  </p>
+  <p>
+    If you have any questions or would like to discuss different sizes or aspect
+    ratios then please email me at
+    <a href="mailto:prints@matt-thorning.dev">prints@matt-thorning.dev</a>
+    .
+  </p>
+{/if}
+<footer>
+  <a href={`/image/${image.previous}`}>previous</a>
+  <a href={`/image/${image.next}`}>next</a>
+</footer>

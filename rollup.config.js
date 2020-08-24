@@ -36,7 +36,6 @@ export default {
         dedupe: ["svelte"],
       }),
       commonjs(),
-
       legacy &&
         babel({
           extensions: [".js", ".mjs", ".html", ".svelte"],

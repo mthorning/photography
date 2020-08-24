@@ -8,7 +8,6 @@
   main {
     min-height: calc(100vh - 57px);
     max-width: 137em;
-    padding: 2em;
     margin: 0 auto;
     box-sizing: border-box;
   }

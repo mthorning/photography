@@ -30,7 +30,7 @@
     grid-template-columns: repeat(auto-fit, minmax(140px, max-content));
     grid-gap: 16px;
     justify-content: center;
-    padding: initial;
+    margin: 32px;
   }
   :global(.pointer) {
     cursor: pointer;
