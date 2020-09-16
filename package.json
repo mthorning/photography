@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "Matt Thorning Photography",
+  "description": "Photograpy gallery",
   "version": "0.11.0",
   "scripts": {
     "dev": "sapper dev",
