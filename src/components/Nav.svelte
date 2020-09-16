@@ -13,6 +13,7 @@
     box-sizing: border-box;
     width: 100%;
     justify-content: space-between;
+    background: rgba(0, 0, 0, 0.2);
   }
 
   ul {
