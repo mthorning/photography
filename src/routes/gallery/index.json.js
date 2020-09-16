@@ -5,6 +5,7 @@ import sizeOf from "image-size";
 const thumbsLocation = "images/thumbnails";
 
 export async function get(req, res, next) {
+console.log('hi')
     fs.readdir(path.resolve("./static", thumbsLocation), (error, files) => {
         res.setHeader("Content-Type", "application/json");
         if (error) {

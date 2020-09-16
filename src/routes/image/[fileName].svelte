@@ -23,10 +23,6 @@
     margin: 0 -32px;
     padding: 32px;
   }
-  h2 {
-    border-top: 1px solid #777;
-    padding-top: 20px;
-  }
   h1 {
     border-bottom: 1px solid #777;
     padding-bottom: 20px;
@@ -45,17 +41,6 @@
   }
   a {
     text-decoration: none;
-  }
-  table {
-    margin: 50px auto;
-    max-width: 450px;
-    width: 100%;
-    text-align: center;
-    border-collapse: collapse;
-  }
-  td {
-    padding: 8px;
-    border-top: 1px solid #777;
   }
 </style>
 
