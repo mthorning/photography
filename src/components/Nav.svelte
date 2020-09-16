@@ -13,6 +13,7 @@
     box-sizing: border-box;
     width: 100%;
     justify-content: space-between;
+    background: rgba(0, 0, 0, 0.2);
   }
 
   ul {
@@ -67,11 +68,23 @@
         rel="prefetch"
         aria-current={segment === undefined ? 'page' : undefined}
         href="/">
+        home
+      </a>
+    </li>
+    <li />
+    <li>
+      <a
+        rel="prefetch"
+        aria-current={segment === 'gallery' ? 'page' : undefined}
+        href="/gallery">
         gallery
       </a>
     </li>
     <li>
-      <a aria-current={segment === 'about' ? 'page' : undefined} href="about">
+      <a
+        rel="prefetch"
+        aria-current={segment === 'about' ? 'page' : undefined}
+        href="about">
         about
       </a>
     </li>

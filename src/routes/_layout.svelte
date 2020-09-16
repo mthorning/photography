@@ -1,20 +1,35 @@
 <script>
+  import { afterUpdate } from 'svelte'
   import Nav from '../components/Nav.svelte'
 
   export let segment
+  let pathname
+  afterUpdate(() => {
+    pathname = window.location.pathname
+  })
 </script>
 
 <style>
   main {
-    min-height: calc(100vh - 57px);
+    height: 100vh;
     max-width: 137em;
     margin: 0 auto;
     box-sizing: border-box;
   }
+  .slot {
+    padding: 2em;
+  }
+  .background {
+    background-image: url(/misty-truro.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
 </style>
 
-<Nav {segment} />
-
-<main>
-  <slot />
+<main class:background={pathname === '/'}>
+  <Nav {segment} />
+  <div class="slot">
+    <slot />
+  </div>
 </main>

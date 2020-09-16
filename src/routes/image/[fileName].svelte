@@ -45,6 +45,9 @@
     padding: 20px 20px 0 20px;
     border-top: 1px solid #777;
   }
+  a {
+    text-decoration: none;
+  }
 </style>
 
 <svelte:head>
