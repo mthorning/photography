@@ -75,7 +75,7 @@
   <p>Processing</p>
   <ul>
     <li>Dell 9360 XPS 13 laptop</li>
-    <li>Adobe Lightroom Classic Adobe</li>
+    <li>Adobe Lightroom Classic</li>
     <li>Photoshop 2020</li>
   </ul>
 
