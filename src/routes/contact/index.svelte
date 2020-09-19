@@ -90,7 +90,9 @@
     {#if error}
       <p>
         There has been an error submitting this form, please contact
-        <a href="mailto:matthewthorning@gmail.com">matthewthorning@gmail.com</a>
+        <a href={`mailto:${process.env.EMAIL_ADDRESS}`}>
+          {process.env.EMAIL_ADDRESS}
+        </a>
         for assistance.
       </p>
     {/if}

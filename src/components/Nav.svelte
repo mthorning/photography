@@ -88,6 +88,14 @@
         about
       </a>
     </li>
+    <li>
+      <a
+        rel="prefetch"
+        aria-current={segment === 'contact' ? 'page' : undefined}
+        href="contact">
+        contact
+      </a>
+    </li>
   </ul>
   <ul>
     <li>
