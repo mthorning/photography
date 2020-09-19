@@ -4,14 +4,12 @@
   export let selectedPrint
 
   let paypal
-
-  const description = `${selectedPrint.x} x ${selectedPrint.y} ${selectedPrint.title}`
+  $: description = `${selectedPrint.x} x ${selectedPrint.y} ${selectedPrint.title} (${selectedPrint.fileName})`
 
   onMount(() => {
     window.paypal
       .Buttons({
         createOrder: (data, actions) => {
-          console.log(selectedPrint, data, actions)
           return actions.order.create({
             intent: 'CAPTURE',
             purchase_units: [
@@ -27,7 +25,7 @@
         },
         onApprove: async (data, actions) => {
           const order = await actions.order.capture()
-          console.log(order)
+          goto(`/thankyou?order_id=${order.id}`)
         },
         onError: (err) => {
           goto('/paypal-error')

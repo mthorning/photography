@@ -1,6 +1,6 @@
 <script>
   import Checkout from './Checkout.svelte'
-  export let printSizes, title
+  export let printSizes, title, fileName
 
   $: selectedPrint = printSizes[0]
   function select(print) {
@@ -69,5 +69,5 @@
       {/each}
     </tbody>
   </table>
-  <Checkout selectedPrint={{ ...selectedPrint, title }} />
+  <Checkout selectedPrint={{ ...selectedPrint, title, fileName }} />
 </div>

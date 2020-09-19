@@ -64,9 +64,9 @@
 {#if printSizes && printSizes.length}
   <h2>Prints</h2>
   <p>This image is available for purchase as a print in the following sizes:</p>
-  <PurchasePanel {title} {printSizes} />
+  <PurchasePanel fileName={image.fileName} {title} {printSizes} />
   <p>
-    Images are printed to order on Hahnemühle Fine Art Baryta paper using high
+    Images are printed to order on Hahnemühle Fine Art Pearl paper using high
     quality inks. It is expected that they will arrive from the printing lab
     within three days but I want to check the quality personally before sending
     them so please allow extra time for this.
@@ -78,8 +78,7 @@
   <p>
     If you have any questions or would like to discuss different sizes or aspect
     ratios then please email me at
-    <a href="mailto:prints@matt-thorning.dev">prints@matt-thorning.dev</a>
-    .
+    <a href="mailto:matthewthorning@gmail.com">matthewthorning@gmail.com</a>
   </p>
 {/if}
 <footer>
