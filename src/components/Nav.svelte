@@ -41,11 +41,12 @@
   [aria-current]::after {
     position: absolute;
     content: '';
-    width: calc(100% - 1em);
-    height: 2px;
-    background-color: #444;
+    width: calc(100% - 10px);
+    height: 1px;
+    background-color: #f0f0f0;
     display: block;
     bottom: -1px;
+    left: 5px;
   }
 
   a {
