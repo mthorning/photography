@@ -6,6 +6,9 @@ import babel from "rollup-plugin-babel";
 import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup.js";
 import pkg from "./package.json";
+import env from 'node-env-file'
+
+env(__dirname + '/.env');
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -24,7 +27,10 @@ export default {
     plugins: [
       replace({
         "process.browser": true,
-        "process.env.NODE_ENV": JSON.stringify(mode),
+        "process.env": JSON.stringify({
+            ...process.env,
+            NODE_ENV: mode
+        })
       }),
       svelte({
         dev,

@@ -51,7 +51,7 @@
   }
   .image-wrapper {
     background: url('/spinner.gif') no-repeat center;
-    background-size: 150px;
+    background-size: 75px;
     text-align: center;
   }
   :global(.image) {

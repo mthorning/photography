@@ -1,14 +1,23 @@
-import sendMail from '../../utils/email.js';
+import nodemailer from 'nodemailer'
+
+// create transporter object with smtp server details
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD
+    }
+});
 
 export async function post(req, res, next) {
-    const { name, email, message } = req.body;
-sendMail({
-    from: email,
-    subject:  `Contact from ${name}`,
-    html: `
-<h3>Message from ${name} (${email}):</h3>
-<p>${message}</p>
-    `
-})
-    res.end(JSON.stringify({ name, email, message}))
+    const { from = process.env.EMAIL_ADDRESS, subject, html } = req.body;
+    transporter.sendMail({
+        to: process.env.EMAIL_ADDRESS,
+        from,
+        subject,
+        html
+    }, (err, info) => {
+        if(err) next(new Error(err));
+        res.end(JSON.stringify({ from, subject, html }))
+    })
 }

@@ -1,45 +1,37 @@
 <script>
   import { goto } from '@sapper/app'
   import Spinner from '../../components/Spinner.svelte'
+  import sendEmail from '../../utils/sendEmail.js'
 
   let submitting = false
   let error = false
-
-  function onError() {
-    error = true
-    submitting = false
-  }
-
-  function onSuccess() {
-    goto('/thankyou?type=message')
-  }
 
   async function submit({ target }) {
     submitting = true
 
     const {
       name: { value: name },
-      email: { value: email },
+      email: { value: from },
       message: { value: message },
     } = target
 
-    console.log(name, email, message)
-    try {
-      const response = await fetch('/contact', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, message }),
-      })
-      if (Number(response.status) >= 400) return onError()
-
-      const data = await response.json()
-      onSuccess(data)
-    } catch (e) {
-      return onError()
-    }
+    sendEmail({
+      body: {
+        from,
+        subject: `Contact from ${name}`,
+        html: `
+            <h3>Message from ${name} (${email}):</h3>
+            <p>${message}</p>
+            `,
+      },
+      onSuccess() {
+        goto('/thankyou?type=message')
+      },
+      onError() {
+        error = true
+        submitting = false
+      },
+    })
   }
 </script>
 

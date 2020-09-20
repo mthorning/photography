@@ -77,8 +77,8 @@
   </p>
   <p>
     If you have any questions or would like to discuss different sizes or aspect
-    ratios then please email me at
-    <a href="mailto:matthewthorning@gmail.com">matthewthorning@gmail.com</a>
+    ratios then please
+    <a href="/contact">contact me.</a>
   </p>
 {/if}
 <footer>

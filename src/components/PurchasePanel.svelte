@@ -1,6 +1,9 @@
 <script>
   import Checkout from './Checkout.svelte'
+  import Spinner from './Spinner.svelte'
   export let printSizes, title, fileName
+
+  let spinner = false
 
   $: selectedPrint = printSizes[0]
   function select(print) {
@@ -9,10 +12,28 @@
 </script>
 
 <style>
-  div {
+  .container {
     margin: 50px auto;
     max-width: 450px;
     width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .spinner {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .spinner > div {
+    height: 25%;
+    width: 25%;
   }
   table {
     width: 100%;
@@ -29,7 +50,14 @@
   }
 </style>
 
-<div>
+<div class="container">
+  {#if spinner}
+    <div class="spinner">
+      <div>
+        <Spinner />
+      </div>
+    </div>
+  {/if}
   <table>
     <thead>
       <th />
@@ -69,5 +97,8 @@
       {/each}
     </tbody>
   </table>
-  <Checkout selectedPrint={{ ...selectedPrint, title, fileName }} />
+  <Checkout
+    showSpinner={() => (spinner = true)}
+    hideSpinner={() => (spinner = false)}
+    selectedPrint={{ ...selectedPrint, title, fileName }} />
 </div>

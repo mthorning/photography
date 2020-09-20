@@ -52,13 +52,13 @@
 <style>
   div {
     background: rgba(0, 0, 0, 0.9) url('/spinner.gif') no-repeat center;
-    background-size: 150px;
+    background-size: 75px;
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 100;
+    z-index: 9999;
     display: flex;
     padding: 16px;
     align-items: center;
