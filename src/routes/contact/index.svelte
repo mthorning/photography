@@ -18,10 +18,11 @@
     sendEmail({
       body: {
         from,
-        subject: `Contact from ${name}`,
+        subject: `Message from ${name}`,
         html: `
-            <h3>Message from ${name} (${email}):</h3>
-            <p>${message}</p>
+            <pre>${message}</pre>
+            <hr />
+            <a href="mailto:${from}">${from}</a>
             `,
       },
       onSuccess() {
