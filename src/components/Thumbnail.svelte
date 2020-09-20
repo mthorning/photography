@@ -13,7 +13,7 @@
     border: 1px solid #f0f0f0;
     float: left;
   }
-  @media (min-width: 580px) {
+  @media (min-width: 600px) {
     div {
       width: 250px;
       height: 250px;

@@ -3,7 +3,7 @@
   "description": "Photograpy gallery",
   "version": "0.14.6",
   "scripts": {
-    "dev": "sapper dev",
+    "dev": "export PORT=3001 && sapper dev",
     "build": "sapper build --legacy",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build",

@@ -35,7 +35,7 @@
   :global(.pointer) {
     cursor: pointer;
   }
-  @media (min-width: 580px) {
+  @media (min-width: 600px) {
     div {
       grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
     }

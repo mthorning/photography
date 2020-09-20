@@ -16,9 +16,6 @@
     margin: 0 auto;
     box-sizing: border-box;
   }
-  .slot {
-    padding: 2em;
-  }
   .background {
     background-image: url(/misty-truro.jpg);
     background-repeat: no-repeat;
@@ -29,7 +26,5 @@
 
 <main class:background={pathname === '/'}>
   <Nav {segment} />
-  <div class="slot">
-    <slot />
-  </div>
+  <slot />
 </main>
