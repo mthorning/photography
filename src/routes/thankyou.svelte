@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte'
+
   let orderId, type
   onMount(() => {
     let params = new URLSearchParams(window.location.search)
