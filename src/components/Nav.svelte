@@ -1,6 +1,7 @@
 <script>
   import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
   import FaTwitterSquare from 'svelte-icons/fa/FaTwitterSquare.svelte'
+  import FaBars from 'svelte-icons/fa/FaBars.svelte'
   export let segment
 </script>
 
@@ -12,6 +13,7 @@
     display: flex;
     box-sizing: border-box;
     width: 100%;
+    height: 57px;
     justify-content: space-between;
     background: rgba(0, 0, 0, 0.2);
   }
@@ -19,6 +21,10 @@
   ul {
     margin: 0;
     padding: 0;
+  }
+
+  .menu-items {
+    display: none;
   }
 
   /* clearfix */
@@ -60,10 +66,37 @@
     padding-top: 18px;
     padding-bottom: 10px;
   }
+  button {
+    width: 3em;
+    height: 3em;
+    padding: 12px;
+    color: #f0f0f0;
+    background: rgba(255, 255, 255, 0.05);
+    align-self: center;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+  }
+  button:focus {
+    outline: none;
+  }
+
+  @media (min-width: 400px) {
+    button {
+      display: none;
+    }
+    .menu-items {
+      display: block;
+    }
+  }
 </style>
 
 <nav>
-  <ul>
+  <button>
+    <FaBars />
+  </button>
+  <ul class="menu-items">
     <li>
       <a
         rel="prefetch"
