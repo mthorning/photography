@@ -46,9 +46,9 @@
   </p>
 
   <p>
-    If you want to get in touch for any reason then please contact me on
-    <a href="mailto:matthewthorning@gmail.com">matthewthorning@gmail.com</a>
-    or through the social media links above. :)
+    If you want to get in touch for any reason then please contact me either
+    <a href="/contact">through my contact page</a>
+    or the social media links above. :)
   </p>
   <h2>Gear List</h2>
   <p>

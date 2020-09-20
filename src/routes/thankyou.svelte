@@ -1,9 +1,10 @@
 <script>
   import { onMount } from 'svelte'
-  let orderId
 
+  let orderId, type
   onMount(() => {
     let params = new URLSearchParams(window.location.search)
+    type = params.get('type')
     orderId = params.get('order_id')
   })
 </script>
@@ -16,10 +17,16 @@
     flex-direction: column;
     align-items: center;
   }
+  h1 {
+    text-align: center;
+  }
 </style>
 
 <div>
-  <h1>Thank you for your order</h1>
+  <h1>
+    Thank you
+    {#if type}for your {type}{/if}
+  </h1>
   {#if orderId}
     <p>Your order ID is {orderId}</p>
   {/if}

@@ -9,12 +9,13 @@ tar -czvf $SITE.tar.gz \
     ./package-lock.json \
     ./Dockerfile \
     ./__sapper__/build \
-    ./static
+    ./static \
+    .env
     
-scp ./$SITE.tar.gz $1:~/containers/$SITE/temp
+scp ./$SITE.tar.gz $1:~/containers/$SITE
 
 ssh $1 << EOF
-    cd ~/containers/$SITE/temp
+    cd ~/containers/$SITE
     tar -xvf $SITE.tar.gz
 
     docker build --no-cache --tag $SITE-image .
@@ -26,6 +27,7 @@ ssh $1 << EOF
         --name photo \
         -v ~/websites/photo-gallery/:/usr/app/static/images/ \
         $SITE-image
+    rm -rf ~/containers/$SITE/*
 EOF
 
 rm $SITE.tar.gz
