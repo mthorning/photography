@@ -12,7 +12,6 @@
 <style>
   main {
     height: 100vh;
-    max-width: 137em;
     margin: 0 auto;
     box-sizing: border-box;
   }
