@@ -1,7 +1,7 @@
 {
   "name": "matt-thorning-photography",
   "description": "Photograpy gallery",
-  "version": "0.16.1",
+  "version": "0.16.2",
   "scripts": {
     "dev": "export PORT=3001 && sapper dev",
     "build": "sapper build --legacy",
