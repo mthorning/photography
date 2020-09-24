@@ -3,7 +3,7 @@
   import { goto } from '@sapper/app'
   import sendEmail from '../utils/sendEmail.js'
 
-  export let selectedPrint
+  export let selectedPrint, showSpinner, hideSpinner
   let paypal
 
   $: description = `${selectedPrint.x} x ${selectedPrint.y} ${selectedPrint.title} (${selectedPrint.fileName})`
@@ -12,6 +12,7 @@
     window.paypal
       .Buttons({
         createOrder: (data, actions) => {
+          showSpinner()
           return actions.order.create({
             intent: 'CAPTURE',
             purchase_units: [
@@ -26,6 +27,7 @@
           })
         },
         onCancel: () => {
+          hideSpinner()
           sendEmail({
             body: {
               subject: `Paypal Cancelled`,

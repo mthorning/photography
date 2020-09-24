@@ -23,7 +23,7 @@
     position: absolute;
     background: rgba(0, 0, 0, 0.5);
     z-index: 9998;
-    top: 0;
+    top: 1;
     bottom: 0;
     right: 0;
     left: 0;
