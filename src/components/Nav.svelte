@@ -2,7 +2,14 @@
   import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
   import FaTwitterSquare from 'svelte-icons/fa/FaTwitterSquare.svelte'
   import FaBars from 'svelte-icons/fa/FaBars.svelte'
-  export let segment
+  export let segment, home
+
+  let open = false
+  const toggleOpen = () => (open = open ? false : true)
+
+  const detectAnchorClick = (e) => {
+    if (e.target.tagName === 'A') open = false
+  }
 </script>
 
 <style>
@@ -15,46 +22,47 @@
     width: 100%;
     height: 57px;
     justify-content: space-between;
-    background: rgba(0, 0, 0, 0.2);
+    background: #19191c;
+    position: fixed;
+    top: 0;
+    z-index: 1;
   }
-
   ul {
     margin: 0;
     padding: 0;
   }
-
-  .menu-items {
-    display: none;
-  }
-
   /* clearfix */
   ul::after {
     content: '';
     display: block;
     clear: both;
   }
-
   li {
+    list-style-type: none;
+  }
+  .menu-items {
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 57px;
+    width: 100vw;
+    height: 0;
+    overflow: hidden;
+    transition: 0.3s ease-in-out height;
+    background: #19191c;
+  }
+  .open {
+    height: 196.2px;
+    border-bottom: 1px solid #444;
+  }
+  .menu-items li a {
+    width: 100%;
+    text-align: center;
+  }
+  .social li {
     display: block;
     float: left;
   }
-
-  [aria-current] {
-    position: relative;
-    display: inline-block;
-  }
-
-  [aria-current]::after {
-    position: absolute;
-    content: '';
-    width: calc(100% - 10px);
-    height: 1px;
-    background-color: #f0f0f0;
-    display: block;
-    bottom: -1px;
-    left: 5px;
-  }
-
   a {
     text-decoration: none;
     padding: 1em 0.5em;
@@ -81,22 +89,54 @@
   button:focus {
     outline: none;
   }
+  .home {
+    background: #7e5c69;
+  }
 
   @media (min-width: 400px) {
+    nav {
+      position: static;
+    }
     button {
       display: none;
     }
     .menu-items {
+      z-index: initial;
+      position: initial;
+      width: initial;
+      border-bottom: 0;
+      height: initial;
+    }
+    .menu-items li {
       display: block;
+      float: left;
+    }
+    .menu-items li a {
+      width: initial;
+    }
+    [aria-current] {
+      position: relative;
+      display: inline-block;
+    }
+
+    [aria-current]::after {
+      position: absolute;
+      content: '';
+      width: calc(100% - 10px);
+      height: 2px;
+      background-color: #f0f0f0;
+      display: block;
+      bottom: -1px;
+      left: 5px;
     }
   }
 </style>
 
-<nav>
-  <button>
+<nav class:home>
+  <button on:click={toggleOpen}>
     <FaBars />
   </button>
-  <ul class="menu-items">
+  <ul class:home class:open class="menu-items" on:click={detectAnchorClick}>
     <li>
       <a
         rel="prefetch"
@@ -131,7 +171,7 @@
       </a>
     </li>
   </ul>
-  <ul>
+  <ul class="social">
     <li>
       <a class="icon" href="https://www.instagram.com/matt.thorning/">
         <FaInstagram />
