@@ -27,6 +27,7 @@
           })
         },
         onCancel: () => {
+          hideSpinner()
           sendEmail({
             body: {
               subject: `Paypal Cancelled`,
@@ -40,7 +41,6 @@
                 `,
             },
           })
-          hideSpinner()
         },
         onApprove: async (data, actions) => {
           const order = await actions.order.capture()

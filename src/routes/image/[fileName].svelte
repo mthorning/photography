@@ -18,11 +18,7 @@
   import PurchasePanel from '../../components/PurchasePanel.svelte'
   export let image
 
-  let allowPurchases, testPurchasing
-  onMount(() => {
-    const params = new URLSearchParams(window.location.search)
-    testPurchasing = params.get('test_purchasing')
-  })
+  let allowPurchases = true
 
   $: printSizes = image.meta.printSizes
     ? image.meta.printSizes.sort((a, b) => a.price - b.price)
@@ -68,14 +64,10 @@
 {#if image.meta && image.meta.description}
   <p class="description">{image.meta.description}</p>
 {/if}
-{#if (allowPurchases || testPurchasing) && printSizes && printSizes.length}
+{#if allowPurchases && printSizes && printSizes.length}
   <h2>Prints</h2>
   <p>This image is available for purchase as a print in the following sizes:</p>
-  <PurchasePanel
-    fileName={image.fileName}
-    {testPurchasing}
-    {title}
-    {printSizes} />
+  <PurchasePanel fileName={image.fileName} {title} {printSizes} />
   <p>
     Images are printed to order on Hahnemühle Fine Art Pearl paper using high
     quality inks. It is expected that they will arrive from the printing lab
