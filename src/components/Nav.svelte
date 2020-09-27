@@ -1,11 +1,21 @@
 <script>
+  import { onMount, onDestroy } from 'svelte'
   import FaInstagram from 'svelte-icons/fa/FaInstagram.svelte'
   import FaTwitterSquare from 'svelte-icons/fa/FaTwitterSquare.svelte'
   import FaBars from 'svelte-icons/fa/FaBars.svelte'
   export let segment, home
 
   let open = false
+  let nav
   const toggleOpen = () => (open = open ? false : true)
+
+  const handleDocClick = ({ target }) => {
+    if (open && !nav.contains(target)) open = false
+  }
+
+  onMount(() => {
+    document.addEventListener('click', handleDocClick)
+  })
 
   const detectAnchorClick = (e) => {
     if (e.target.tagName === 'A') open = false
@@ -132,7 +142,7 @@
   }
 </style>
 
-<nav class:home>
+<nav bind:this={nav} class:home>
   <button on:click={toggleOpen}>
     <FaBars />
   </button>
