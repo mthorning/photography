@@ -22,6 +22,7 @@
     }
   }
   .background {
+    padding-top: 0;
     background-image: url(/misty-truro.jpg);
     background-repeat: no-repeat;
     background-size: cover;

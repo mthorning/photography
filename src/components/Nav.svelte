@@ -99,10 +99,12 @@
   button:focus {
     outline: none;
   }
-  .home {
-    background: #7e5c69;
+  nav.home {
+    background: rgba(0, 0, 0, 0);
   }
-
+  ul.home {
+    background: #7b5d68eb;
+  }
   @media (min-width: 400px) {
     nav {
       position: static;
