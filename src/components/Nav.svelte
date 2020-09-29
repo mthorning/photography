@@ -59,7 +59,7 @@
     height: 0;
     overflow: hidden;
     transition: 0.3s ease-in-out height;
-    background: #19191c;
+    background: rgba(25, 25, 28, 0.9);
   }
   .open {
     height: 196.2px;
@@ -103,7 +103,7 @@
     background: rgba(0, 0, 0, 0);
   }
   ul.home {
-    background: #7b5d68eb;
+    background: rgba(123, 93, 104, 0.9);
   }
   @media (min-width: 400px) {
     nav {
@@ -118,6 +118,7 @@
       width: initial;
       border-bottom: 0;
       height: initial;
+      background: rgba(0, 0, 0, 0);
     }
     .menu-items li {
       display: block;
@@ -125,6 +126,9 @@
     }
     .menu-items li a {
       width: initial;
+    }
+    ul.home {
+      background: rgba(0, 0, 0, 0);
     }
     [aria-current] {
       position: relative;
