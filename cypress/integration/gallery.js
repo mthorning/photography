@@ -30,5 +30,4 @@ describe('gallery', () => {
         cy.get('[data-test="gallery"]').should('exist')
     })
 
-
 });
