@@ -46,7 +46,7 @@
   <title>Gallery</title>
 </svelte:head>
 
-<div>
+<div data-test="gallery">
   {#if !images || !images.length}
     <h5>I thought I had more images than this...</h5>
   {:else}
