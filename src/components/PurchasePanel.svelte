@@ -50,7 +50,7 @@
   }
 </style>
 
-<div class="container">
+<div data-test="purchasePanel" class="container">
   {#if spinner}
     <div class="spinner">
       <div>
