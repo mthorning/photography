@@ -24,7 +24,6 @@
 
 <style>
   nav {
-    border-bottom: 1px solid #444;
     font-weight: 300;
     padding: 0 1em;
     display: flex;
@@ -93,6 +92,7 @@
     align-self: center;
     cursor: pointer;
     border: none;
+    border-radius: 5px;
     display: flex;
     align-items: center;
   }
@@ -139,10 +139,10 @@
       position: absolute;
       content: '';
       width: calc(100% - 10px);
-      height: 2px;
+      height: 1px;
       background-color: #f0f0f0;
       display: block;
-      bottom: -1px;
+      bottom: 2px;
       left: 5px;
     }
   }
