@@ -74,6 +74,7 @@
 
 <!-- svelte-ignore a11y-autofocus -->
 <div
+  data-test="lightbox"
   on:click={() => close()}
   on:touchstart={onTouchstart}
   on:touchend={onTouchend}>

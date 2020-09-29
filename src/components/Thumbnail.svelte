@@ -33,7 +33,7 @@
   }
 </style>
 
-<div class="thumbnail">
+<div data-test="thumbnail" class="thumbnail">
   <Img
     on:click
     class={`img ${isPortrait ? 'isPortrait' : ''}`}
