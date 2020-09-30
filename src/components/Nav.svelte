@@ -174,7 +174,7 @@
       <a
         rel="prefetch"
         aria-current={segment === 'about' ? 'page' : undefined}
-        href="about">
+        href="/about">
         about
       </a>
     </li>
@@ -182,7 +182,7 @@
       <a
         rel="prefetch"
         aria-current={segment === 'contact' ? 'page' : undefined}
-        href="contact">
+        href="/contact">
         contact
       </a>
     </li>

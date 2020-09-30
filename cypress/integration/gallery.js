@@ -1,13 +1,14 @@
 describe('gallery', () => {
+    beforeEach(() => {
+        cy.visit('/')
+        cy.get('nav a[href="/gallery"]').click()
+    })
     
     it('shows gallery', () => {
-        cy.visit('/')
-        cy.get('a[href="/gallery"]').click()
         cy.get('[data-test="gallery"]').should('exist')
     })
 
     it('shows fullsize images', () => {
-        cy.visit('/gallery')
         cy.get('[data-test="thumbnail"]').first().click()
         cy.get('[data-test="lightbox"] img').should('have.attr', 'src').then(firstImg => {
                 cy.repeat(() => {
