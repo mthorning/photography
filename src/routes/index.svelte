@@ -4,7 +4,7 @@
 
 <style>
   div {
-    padding: 100px 32px;
+    padding: 125px 32px;
     max-width: 700px;
     margin: auto;
   }
