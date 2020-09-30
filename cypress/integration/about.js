@@ -16,7 +16,7 @@ describe('about page', () => {
         cy.get('[data-test="gear-list"]').should('be.visible')
     })
 
-    it.only('links to contact page', () => {
+    it('links to contact page', () => {
         cy.get('[data-test="some-gibberish"]').find('a[href="/contact"]').click()
         cy.wait(500)
         cy.get('h1').contains('Contact').should('be.visible')
