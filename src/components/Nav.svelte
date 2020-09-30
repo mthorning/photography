@@ -152,7 +152,12 @@
   <button on:click={toggleOpen}>
     <FaBars />
   </button>
-  <ul class:home class:open class="menu-items" on:click={detectAnchorClick}>
+  <ul
+    data-test="menu-items"
+    class:home
+    class:open
+    class="menu-items"
+    on:click={detectAnchorClick}>
     <li>
       <a
         rel="prefetch"
