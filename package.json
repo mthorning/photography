@@ -11,7 +11,7 @@
     "cy:open": "cypress open",
     "test": "run-p --race dev cy:run",
     "release": "./release-code.sh vps",
-    "preversion": "npm run cy:run",
+    "preversion": "npm run build && npm start& npm run cy:run",
     "postversion": "git push && git push --tags && npm run release"
   },
   "dependencies": {
